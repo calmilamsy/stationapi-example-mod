@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "examplemod",
   "version": "${version}",
 
   "name": "Example Mod",
@@ -14,16 +14,28 @@
   },
 
   "license": "CC0-1.0",
-  "icon": "assets/modid/icon.png",
+  "icon": "assets/examplemod/icon.png",
 
   "environment": "*",
   "entrypoints": {
-    "main": [
-      "net.glasslauncher.example.ExampleMod"
+    "stationapi:event_bus": [
+      "net.glasslauncher.example.events.init.AchievementListener",
+      "net.glasslauncher.example.events.init.BlockListener",
+      "net.glasslauncher.example.events.init.ItemListener",
+      "net.glasslauncher.example.events.init.PlayerHandlerListener",
+      "net.glasslauncher.example.events.init.RecipeListener"
+    ],
+    "stationapi:event_bus_client": [
+      "net.glasslauncher.example.events.init.ModelListener",
+      "net.glasslauncher.example.events.init.KeyBindingListener",
+      "net.glasslauncher.example.events.init.TextureListener"
+    ],
+    "stationapi:event_bus_server": [
+      "net.glasslauncher.example.events.init.ServerInitListener"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "examplemod.mixins.json"
   ],
 
   "depends": {
