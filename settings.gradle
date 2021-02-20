@@ -1,4 +1,0 @@
-include "StationAPI"
-project(":StationAPI").projectDir = file("../StationLoader")
-include "howmanyitems"
-project(":howmanyitems").projectDir = file("../HowManyItems")
