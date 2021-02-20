@@ -141,11 +141,8 @@ publishing {
 				builtBy remapJar
 			}
 			pom.withXml {
-				ignoredMavenDependencies = [
-						"fabric-loader"
-				]
 				asNode().dependencies.dependency.each { dep ->
-					if(dep.artifactId.last().value().last() in ignoredMavenDependencies) {
+					if(dep.artifactId.last().value().last().toLowerCase() in ["fabric-loader", "stationapi"]) {
 						assert dep.parent().remove(dep)
 					}
 				}
