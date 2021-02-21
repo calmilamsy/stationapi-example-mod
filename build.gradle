@@ -141,7 +141,7 @@ publishing {
 			}
 			pom.withXml {
 				asNode().dependencies.dependency.each { dep ->
-					if(dep.artifactId.last().value().last().toLowerCase() in ["cursed-fabric-loader", "StationAPI"]) {
+					if(dep.artifactId.last().value().last().toLowerCase() in ["cursed-fabric-loader", "stationapi"]) {
 						assert dep.parent().remove(dep)
 					}
 				}
