@@ -2,16 +2,14 @@ package net.glasslauncher.example.custom;
 
 import net.minecraft.block.BlockBase;
 import net.modificationstation.stationapi.api.client.gui.screen.menu.AchievementPage;
+import net.modificationstation.stationapi.api.common.registry.ModID;
 
 import java.util.Random;
 
 public class ExampleAchievementPage extends AchievementPage {
 
-    /**
-     * @param pageName The name of the page that is shown on the achievements screen.
-     */
-    public ExampleAchievementPage(String pageName) {
-        super(pageName);
+    public ExampleAchievementPage(ModID modID, String pageName) {
+        super(modID, pageName);
     }
 
     @Override

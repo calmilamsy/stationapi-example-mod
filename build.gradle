@@ -46,6 +46,10 @@ repositories {
 		name = "Jitpack"
 		url "https://jitpack.io/"
 	}
+	maven {
+		name = "Glass"
+		url "https://maven.glass-launcher.net/repo/"
+	}
 }
 
 minecraft {
@@ -84,7 +88,7 @@ dependencies {
 
 	modImplementation "com.github.minecraft-cursed-legacy:cursed-fabric-loader:${project.loader_version}"
 
-	modImplementation "com.github.ModificationStation:StationAPI:${project.stapi_version}"
+	modImplementation "net.modificationstation:StationAPI:${project.stapi_version}"
 }
 
 processResources {
@@ -138,13 +142,6 @@ publishing {
 			artifact ("${project.buildDir.absolutePath}/libs/${archivesBaseName}-${project.version}-dev.jar") {
 				classifier 'dev'
 				builtBy remapJar
-			}
-			pom.withXml {
-				asNode().dependencies.dependency.each { dep ->
-					if(dep.artifactId.last().value().last().toLowerCase() in ["cursed-fabric-loader", "stationapi"]) {
-						assert dep.parent().remove(dep)
-					}
-				}
 			}
 		}
 	}
