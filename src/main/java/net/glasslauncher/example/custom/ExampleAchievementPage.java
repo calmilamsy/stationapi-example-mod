@@ -1,19 +1,24 @@
 package net.glasslauncher.example.custom;
 
+import net.minecraft.achievement.Achievement;
 import net.minecraft.block.BlockBase;
-import net.modificationstation.stationapi.api.client.gui.screen.menu.AchievementPage;
-import net.modificationstation.stationapi.api.common.registry.ModID;
+import net.modificationstation.stationloader.api.common.achievement.AchievementPage;
+import net.modificationstation.stationloader.api.common.achievement.AchievementPageManager;
 
-import java.util.Random;
+import java.util.*;
 
-public class ExampleAchievementPage extends AchievementPage {
+public class ExampleAchievementPage implements AchievementPage {
 
-    public ExampleAchievementPage(ModID modID, String pageName) {
-        super(modID, pageName);
+    private final ArrayList<Integer> achievements = new ArrayList<>();
+    private final String name;
+
+    public ExampleAchievementPage(String pageName) {
+        name = pageName;
+        AchievementPageManager.INSTANCE.addPage(this);
     }
 
     @Override
-    public int getBackgroundTexture(Random random, int column, int row, int randomizedRow, int currentTexture) {
+    public int getBackgroundTexture(Random random, int column, int row) {
         int k = BlockBase.SAND.texture;
         int l = random.nextInt(1 + row) + row / 2;
         if (l <= 37 && row != 35) {
@@ -33,5 +38,21 @@ public class ExampleAchievementPage extends AchievementPage {
         }
 
         return k;
+    }
+
+    @Override
+    public void addAchievements(Achievement... achievements) {
+        for (Achievement achievement : achievements)
+            this.achievements.add(achievement.ID);
+    }
+
+    @Override
+    public ArrayList<Integer> getAchievementIds() {
+        return achievements;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 }
