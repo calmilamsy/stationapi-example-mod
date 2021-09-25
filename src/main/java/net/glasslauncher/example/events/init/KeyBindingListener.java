@@ -1,10 +1,11 @@
 package net.glasslauncher.example.events.init;
 
+import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.client.options.KeyBinding;
-import net.modificationstation.stationapi.api.client.event.option.KeyBindingRegister;
-import net.modificationstation.stationapi.api.common.event.EventListener;
+import net.modificationstation.stationapi.api.client.event.option.KeyBindingRegisterEvent;
+import org.lwjgl.input.Keyboard;
 
-import java.util.List;
+import java.util.*;
 
 public class KeyBindingListener {
 
@@ -13,13 +14,10 @@ public class KeyBindingListener {
     public static KeyBinding keyBinding3;
 
     @EventListener
-    public void registerKeyBindings(KeyBindingRegister event) {
+    public void registerKeyBindings(KeyBindingRegisterEvent event) {
         List<KeyBinding> list = event.keyBindings;
-        keyBinding = new KeyBinding("key.examplemod.test", 21);
-        keyBinding2 = new KeyBinding("key.examplemod.test2", 22);
-        keyBinding3 = new KeyBinding("key.examplemod.hurtme", 23);
-        list.add(keyBinding);
-        list.add(keyBinding2);
-        list.add(keyBinding3);
+        list.add(keyBinding = new KeyBinding("key.examplemod.test", Keyboard.KEY_Y));
+        list.add(keyBinding2 = new KeyBinding("key.examplemod.test2", Keyboard.KEY_U));
+        list.add(keyBinding3 = new KeyBinding("key.examplemod.hurtme", Keyboard.KEY_I));
     }
 }

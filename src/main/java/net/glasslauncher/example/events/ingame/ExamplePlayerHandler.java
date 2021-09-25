@@ -1,6 +1,6 @@
 package net.glasslauncher.example.events.ingame;
 
-import net.modificationstation.stationapi.api.common.entity.player.PlayerHandler;
+import net.modificationstation.stationapi.api.entity.player.PlayerHandler;
 
 public class ExamplePlayerHandler implements PlayerHandler {
 

@@ -1,14 +1,19 @@
 package net.glasslauncher.example.events.init;
 
-import net.modificationstation.stationapi.api.client.event.texture.TextureRegister;
-import net.modificationstation.stationapi.api.client.texture.TextureFactory;
-import net.modificationstation.stationapi.api.client.texture.TextureRegistry;
-import net.modificationstation.stationapi.api.common.event.EventListener;
+import net.mine_diver.unsafeevents.listener.EventListener;
+import net.modificationstation.stationapi.api.client.event.texture.TextureRegisterEvent;
+import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
+import net.modificationstation.stationapi.api.registry.Identifier;
+import net.modificationstation.stationapi.api.registry.ModID;
+import net.modificationstation.stationapi.api.util.Null;
 
 public class TextureListener {
 
+    @Entrypoint.ModID
+    public static final ModID MOD_ID = Null.get();
+
     @EventListener
-    public void registerTextures(TextureRegister event) {
-        ItemListener.coolItem.setTexturePosition(TextureFactory.INSTANCE.addTexture(TextureRegistry.getRegistry("GUI_ITEMS"), "/assets/examplemod/textures/coolItem.png"));
+    public void registerTextures(TextureRegisterEvent event) {
+        ItemListener.coolItem.setTexture(Identifier.of(MOD_ID, "coolItem"));
     }
 }

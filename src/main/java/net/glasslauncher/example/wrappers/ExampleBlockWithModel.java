@@ -2,13 +2,14 @@ package net.glasslauncher.example.wrappers;
 
 import net.glasslauncher.example.events.init.ModelListener;
 import net.minecraft.block.material.Material;
-import net.minecraft.level.Level;
-import net.modificationstation.stationapi.api.client.model.BlockModelProvider;
-import net.modificationstation.stationapi.api.client.model.CustomModel;
-import net.modificationstation.stationapi.api.common.registry.Identifier;
-import net.modificationstation.stationapi.template.common.block.BlockBase;
+import net.minecraft.level.BlockView;
+import net.modificationstation.stationapi.api.client.model.Model;
+import net.modificationstation.stationapi.api.client.model.block.BlockInventoryModelProvider;
+import net.modificationstation.stationapi.api.client.model.block.BlockWorldModelProvider;
+import net.modificationstation.stationapi.api.registry.Identifier;
+import net.modificationstation.stationapi.api.template.block.TemplateBlockBase;
 
-public class ExampleBlockWithModel extends BlockBase implements BlockModelProvider {
+public class ExampleBlockWithModel extends TemplateBlockBase implements BlockWorldModelProvider, BlockInventoryModelProvider {
 
     public ExampleBlockWithModel(Identifier identifier, Material material) {
         super(identifier, material);
@@ -20,12 +21,12 @@ public class ExampleBlockWithModel extends BlockBase implements BlockModelProvid
     }
 
     @Override
-    public CustomModel getCustomWorldModel(Level level, int x, int y, int z, int meta) {
+    public Model getInventoryModel(int meta) {
         return ModelListener.CUSTOM_MODEL;
     }
 
     @Override
-    public CustomModel getCustomInventoryModel(int meta) {
+    public Model getCustomWorldModel(BlockView blockView, int x, int y, int z) {
         return ModelListener.CUSTOM_MODEL;
     }
 }

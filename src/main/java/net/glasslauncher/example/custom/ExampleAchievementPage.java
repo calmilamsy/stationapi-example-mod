@@ -2,9 +2,9 @@ package net.glasslauncher.example.custom;
 
 import net.minecraft.block.BlockBase;
 import net.modificationstation.stationapi.api.client.gui.screen.menu.AchievementPage;
-import net.modificationstation.stationapi.api.common.registry.ModID;
+import net.modificationstation.stationapi.api.registry.ModID;
 
-import java.util.Random;
+import java.util.*;
 
 public class ExampleAchievementPage extends AchievementPage {
 

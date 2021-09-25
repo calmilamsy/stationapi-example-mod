@@ -1,18 +1,18 @@
 buildscript {
 	repositories {
-		mavenCentral()
-		jcenter()
 		maven {
 			name = "Fabric"
 			url = "https://maven.fabricmc.net/"
 		}
+		mavenCentral()
+		jcenter()
 		maven {
 			name = "Jitpack"
 			url 'https://jitpack.io/'
 		}
 	}
 	dependencies {
-		classpath 'com.github.Chocohead:Fabric-Loom:e3d1762'
+		classpath 'com.github.Chocohead:Fabric-Loom:0d0261a'
 	}
 }
 
@@ -46,10 +46,6 @@ repositories {
 		name = "Jitpack"
 		url "https://jitpack.io/"
 	}
-	maven {
-		name = "Glass"
-		url "https://maven.glass-launcher.net/repo/"
-	}
 }
 
 minecraft {
@@ -71,6 +67,10 @@ dependencies {
 	implementation 'org.ow2.asm:asm-tree:9.0'
 	implementation 'org.ow2.asm:asm-util:9.0'
 
+	implementation "com.github.jhalterman:typetools:87240d6"
+	implementation "com.github.mineLdiver:expressions:2fa66db"
+	implementation "com.github.mineLdiver:UnsafeEvents:7efec57"
+
 	// to change the versions see the gradle.properties file
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
 
@@ -88,7 +88,7 @@ dependencies {
 
 	modImplementation "com.github.minecraft-cursed-legacy:cursed-fabric-loader:${project.loader_version}"
 
-	modImplementation "net.modificationstation:StationAPI:${project.stapi_version}"
+	modImplementation "com.github.ModificationStation:StationAPI:${project.stapi_version}"
 }
 
 processResources {

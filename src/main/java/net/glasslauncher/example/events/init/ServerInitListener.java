@@ -1,10 +1,10 @@
 package net.glasslauncher.example.events.init;
 
-import net.modificationstation.stationapi.api.common.event.EventListener;
-import net.modificationstation.stationapi.api.common.event.mod.Init;
-import net.modificationstation.stationapi.api.common.mod.entrypoint.Entrypoint;
-import net.modificationstation.stationapi.api.common.registry.ModID;
-import net.modificationstation.stationapi.api.common.util.Null;
+import net.mine_diver.unsafeevents.listener.EventListener;
+import net.modificationstation.stationapi.api.event.mod.InitEvent;
+import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
+import net.modificationstation.stationapi.api.registry.ModID;
+import net.modificationstation.stationapi.api.util.Null;
 import org.apache.logging.log4j.Logger;
 
 public class ServerInitListener {
@@ -16,7 +16,7 @@ public class ServerInitListener {
     private static final Logger LOGGER = Null.get();
 
     @EventListener
-    private static void serverInit(Init event) {
+    private static void serverInit(InitEvent event) {
         LOGGER.error(MOD_ID.toString());
     }
 }

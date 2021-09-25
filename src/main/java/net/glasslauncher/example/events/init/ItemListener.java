@@ -1,22 +1,22 @@
 package net.glasslauncher.example.events.init;
 
-import net.minecraft.item.ItemBase;
-import net.modificationstation.stationapi.api.common.event.EventListener;
-import net.modificationstation.stationapi.api.common.event.item.ItemRegister;
-import net.modificationstation.stationapi.api.common.mod.entrypoint.Entrypoint;
-import net.modificationstation.stationapi.api.common.registry.Identifier;
-import net.modificationstation.stationapi.api.common.registry.ModID;
-import net.modificationstation.stationapi.api.common.util.Null;
+import net.mine_diver.unsafeevents.listener.EventListener;
+import net.modificationstation.stationapi.api.event.registry.ItemRegistryEvent;
+import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
+import net.modificationstation.stationapi.api.registry.Identifier;
+import net.modificationstation.stationapi.api.registry.ModID;
+import net.modificationstation.stationapi.api.template.item.TemplateItemBase;
+import net.modificationstation.stationapi.api.util.Null;
 
 public class ItemListener {
 
-    public static ItemBase coolItem;
+    public static TemplateItemBase coolItem;
 
     @Entrypoint.ModID
     public static final ModID MOD_ID = Null.get();
 
     @EventListener
-    public void registerItems(ItemRegister event) {
-        coolItem = new net.modificationstation.stationapi.template.common.item.ItemBase(Identifier.of(MOD_ID, "coolitem")).setTranslationKey(MOD_ID, "coolitem");
+    public void registerItems(ItemRegistryEvent event) {
+        coolItem = new TemplateItemBase(Identifier.of(MOD_ID, "coolitem")).setTranslationKey(MOD_ID, "coolitem");
     }
 }
