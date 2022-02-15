@@ -1,0 +1,18 @@
+pluginManagement {
+    repositories {
+        maven {
+            name = "Glass"
+            url "https://maven.glass-launcher.net/snapshots"
+        }
+        maven {
+            name = 'Fabrick'
+            url 'https://maven.fabricmc.net/'
+        }
+        maven {
+            name = "Jitpack"
+            url "https://jitpack.io/"
+        }
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}

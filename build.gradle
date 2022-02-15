@@ -1,26 +1,7 @@
-buildscript {
-	repositories {
-		maven {
-			name = "Fabric"
-			url = "https://maven.fabricmc.net/"
-		}
-		mavenCentral()
-		jcenter()
-		maven {
-			name = "Jitpack"
-			url 'https://jitpack.io/'
-		}
-	}
-	dependencies {
-		classpath 'com.github.Chocohead:Fabric-Loom:0d0261a'
-	}
-}
-
 plugins {
 	id 'maven-publish'
+	id 'fabric-loom' version '0.2.9-SNAPSHOT'
 }
-
-apply plugin: "fabric-loom"
 
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
@@ -43,35 +24,37 @@ eclipse {
 
 repositories {
 	maven {
+		name = "Glass"
+		url "https://maven.glass-launcher.net/snapshots"
+	}
+	maven {
+		name = 'HalfOf2'
+		url = 'https://storage.googleapis.com/devan-maven/'
+	}
+	maven {
+		name = 'Froge'
+		url 'https://maven.minecraftforge.net/'
+	}
+	maven {
 		name = "Jitpack"
 		url "https://jitpack.io/"
 	}
-}
-
-minecraft {
+	mavenCentral()
 }
 
 dependencies {
-	// fabric loader requires log4j, guava, and gson
-	implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.8.1'
-	implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.8.1'
-	annotationProcessor group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.8.1'
-	annotationProcessor group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.8.1'
-	implementation 'com.google.guava:guava:28.0-jre'
-	implementation group: 'com.google.code.gson', name: 'gson', version: '2.8.6'
+	implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.17.1'
+	implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.17.1'
+	annotationProcessor group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.17.1'
+	annotationProcessor group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.17.1'
 
 	// mixin and fabric loader need asm 9
-	implementation 'org.ow2.asm:asm:9.0'
-	implementation 'org.ow2.asm:asm-analysis:9.0'
-	implementation 'org.ow2.asm:asm-commons:9.0'
-	implementation 'org.ow2.asm:asm-tree:9.0'
-	implementation 'org.ow2.asm:asm-util:9.0'
+	implementation 'org.ow2.asm:asm:9.2'
+	implementation 'org.ow2.asm:asm-analysis:9.2'
+	implementation 'org.ow2.asm:asm-commons:9.2'
+	implementation 'org.ow2.asm:asm-tree:9.2'
+	implementation 'org.ow2.asm:asm-util:9.2'
 
-	implementation "com.github.jhalterman:typetools:87240d6"
-	implementation "com.github.mineLdiver:expressions:2fa66db"
-	implementation "com.github.mineLdiver:UnsafeEvents:7efec57"
-
-	// to change the versions see the gradle.properties file
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
 
 	mappings loom.fromCommit("calmilamsy/BIN-Mappings", "${project.yarn_mappings}") {spec ->
@@ -80,27 +63,22 @@ dependencies {
 
 	// convenience stuff
 	// adds some useful annotations for data classes. does not add any dependencies
-	compileOnly 'org.projectlombok:lombok:1.18.16'
-	annotationProcessor 'org.projectlombok:lombok:1.18.16'
+	compileOnly 'org.projectlombok:lombok:1.18.22'
+	annotationProcessor 'org.projectlombok:lombok:1.18.22'
 
 	// adds some useful annotations for miscellaneous uses. does not add any dependencies, though people without the lib will be missing some useful context hints.
-	compile 'org.jetbrains:annotations:16.0.2'
+	implementation 'org.jetbrains:annotations:22.0.0'
 
-	modImplementation "com.github.minecraft-cursed-legacy:cursed-fabric-loader:${project.loader_version}"
+	modImplementation "com.github.calmilamsy:cursed-fabric-loader:${project.loader_version}"
 
-	modImplementation "com.github.ModificationStation:StationAPI:${project.stapi_version}"
+	modImplementation "net.modificationstation:StationAPI:${project.stapi_version}"
 }
 
 processResources {
 	inputs.property "version", project.version
 
-	from(sourceSets.main.resources.srcDirs) {
-		include "fabric.mod.json"
+	filesMatching("fabric.mod.json") {
 		expand "version": project.version
-	}
-
-	from(sourceSets.main.resources.srcDirs) {
-		exclude "fabric.mod.json"
 	}
 }
 
