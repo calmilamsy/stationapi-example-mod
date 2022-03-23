@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '0.12.cursed_1'
+	id 'babric-loom' version '0.12-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -10,6 +10,11 @@ archivesBaseName = project.archives_base_name
 version = project.mod_version
 group = project.maven_group
 
+loom {
+	gluedMinecraftJar()
+	customMinecraftManifest.set("https://babric.github.io/manifest-polyfill/${minecraft_version}.json")
+}
+
 repositories {
 	// Add repositories to retrieve artifacts from in here.
 	// You should only use this when depending on other mods because
@@ -17,43 +22,42 @@ repositories {
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
 	maven {
-		name = 'Jitpack'
-		url = 'https://jitpack.io'
+		name = 'Babric'
+		url = 'https://maven.glass-launcher.net/babric'
 	}
 	maven {
-		name = 'Glass'
+		name = 'Glass Releases'
+		url = 'https://maven.glass-launcher.net/releases'
+	}
+	maven {
+		name = 'Glass Snapshots'
 		url = 'https://maven.glass-launcher.net/snapshots'
 	}
-	maven {
-		name = 'HalfOf2'
-		url = 'https://storage.googleapis.com/devan-maven/'
-	}
+	// Used for a StationAPI dependency.
 	maven {
 		name = 'Froge'
 		url 'https://maven.minecraftforge.net/'
 	}
-}
-
-loom {
-	customMinecraftManifest = "https://pymcl.net/b1.7.3.json"
-	intermediaryUrl = "https://pymcl.net/b1.7.3-int.jar"
-	cursedMinecraftJar()
+	maven {
+		name = 'Jitpack'
+		url = 'https://jitpack.io'
+	}
+	mavenCentral()
 }
 
 dependencies {
 	// To change the versions see the gradle.properties file
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
-	mappings "com.github.calmilamsy:BIN-Mappings:${project.yarn_mappings}"
+	mappings "net.glasslauncher:bin:${project.yarn_mappings}"
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
-	modImplementation ("net.modificationstation:StationAPI:99ccdc3") {
-		exclude module: "cursed-fabric-loader"
-	}
+	implementation "org.slf4j:slf4j-api:1.8.0-beta4"
+	implementation 'org.apache.logging.log4j:log4j-slf4j18-impl:2.17.1'
 
 	implementation "com.google.code.gson:gson:2.9.0"
-
-	// Fabric API. This is technically optional, but you probably want it anyway.
-	// modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+	modImplementation ("net.modificationstation:StationAPI:${project.stapi_version}") {
+		exclude module: "cursed-fabric-loader"
+	}
 }
 
 processResources {

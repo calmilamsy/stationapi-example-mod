@@ -5,14 +5,9 @@ pluginManagement {
             url = 'https://maven.fabricmc.net/'
         }
         maven {
-            name = 'Jitpack'
-            url = 'https://jitpack.io'
+            name = 'Babric'
+            url = 'https://maven.glass-launcher.net/babric'
         }
-        maven {
-            name = "Glass"
-            url = "https://maven.glass-launcher.net/snapshots"
-        }
-        mavenLocal()
         mavenCentral()
         gradlePluginPortal()
     }
