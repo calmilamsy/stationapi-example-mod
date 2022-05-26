@@ -1,5 +1,5 @@
 plugins {
-	id 'babric-loom' version '0.12-SNAPSHOT'
+	id 'babric-loom' version '0.12.10'
 	id 'maven-publish'
 }
 
@@ -21,14 +21,18 @@ repositories {
 	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
+
+	// Used for the fabric toolchain in this project.
 	maven {
 		name = 'Babric'
 		url = 'https://maven.glass-launcher.net/babric'
 	}
+	// Used for mappings.
 	maven {
 		name = 'Glass Releases'
 		url = 'https://maven.glass-launcher.net/releases'
 	}
+	// Used for StationAPI and HowManyItems.
 	maven {
 		name = 'Glass Snapshots'
 		url = 'https://maven.glass-launcher.net/snapshots'
@@ -38,6 +42,7 @@ repositories {
 		name = 'Froge'
 		url 'https://maven.minecraftforge.net/'
 	}
+	// Used for projects that do not have a maven repository, but do have a GitHub repository with working build scripts.
 	maven {
 		name = 'Jitpack'
 		url = 'https://jitpack.io'
@@ -49,14 +54,22 @@ dependencies {
 	// To change the versions see the gradle.properties file
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
 	mappings "net.glasslauncher:bin:${project.yarn_mappings}"
-	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	modImplementation "babric:fabric-loader:${project.loader_version}"
 
 	implementation "org.slf4j:slf4j-api:1.8.0-beta4"
-	implementation 'org.apache.logging.log4j:log4j-slf4j18-impl:2.17.1'
+	implementation 'org.apache.logging.log4j:log4j-slf4j18-impl:2.17.2'
 
-	implementation "com.google.code.gson:gson:2.9.0"
-	modImplementation ("net.modificationstation:StationAPI:${project.stapi_version}") {
-		exclude module: "cursed-fabric-loader"
+	modImplementation "net.modificationstation:StationAPI:${project.stapi_version}"
+
+	// Optional, but convenient mods for mod creators and users alike.
+	modImplementation("com.github.calmilamsy:ModMenu:${project.modmenu_version}") {
+		transitive false
+	}
+	modImplementation("com.github.calmilamsy:glass-config-api:${project.gcapi_version}") {
+		transitive false
+	}
+	modImplementation("net.glasslauncher:HowManyItems-Fabric-Unofficial:${project.howmanyitems_version}") {
+		transitive false
 	}
 }
 
@@ -70,6 +83,7 @@ processResources {
 
 tasks.withType(JavaCompile).configureEach {
 	// Minecraft 1.18 (1.18-pre2) upwards uses Java 17.
+	// Loom also requires J17.
 	it.options.release = 17
 }
 
