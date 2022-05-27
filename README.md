@@ -2,7 +2,7 @@
 
 ## Setup
 
-[See the StationAPI wiki.]([https://github.com/ModificationStation/StationAPI](https://github.com/ModificationStation/StationAPI/wiki))
+[See the StationAPI wiki.](https://github.com/ModificationStation/StationAPI/wiki)
 
 ## Common Issues
 
