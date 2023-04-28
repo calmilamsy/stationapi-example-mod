@@ -14,6 +14,6 @@ public class TextureListener {
 
     @EventListener
     public void registerTextures(TextureRegisterEvent event) {
-        ItemListener.coolItem.setTexture(Identifier.of(MOD_ID, "coolItem"));
+        ItemListener.coolItem.setTexture(Identifier.of(MOD_ID, "item/coolItem"));
     }
 }

@@ -26,7 +26,6 @@
       "net.glasslauncher.example.events.init.RecipeListener"
     ],
     "stationapi:event_bus_client": [
-      "net.glasslauncher.example.events.init.ModelListener",
       "net.glasslauncher.example.events.init.KeyBindingListener",
       "net.glasslauncher.example.events.init.TextureListener",
       "net.glasslauncher.example.events.ingame.KeyPressedListener"

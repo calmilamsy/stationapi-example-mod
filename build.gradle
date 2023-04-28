@@ -1,5 +1,5 @@
 plugins {
-	id 'babric-loom' version '0.12.10'
+	id 'babric-loom' version '1.1.7'
 	id 'maven-publish'
 }
 
@@ -65,7 +65,7 @@ dependencies {
 	modImplementation("com.github.calmilamsy:ModMenu:${project.modmenu_version}") {
 		transitive false
 	}
-	modImplementation("com.github.calmilamsy:glass-config-api:${project.gcapi_version}") {
+	modImplementation("net.glasslauncher.mods:GlassConfigAPI:${project.gcapi_version}") {
 		transitive false
 	}
 	modImplementation("net.glasslauncher:HowManyItems-Fabric-Unofficial:${project.howmanyitems_version}") {
