@@ -1,5 +1,5 @@
 plugins {
-	id 'babric-loom' version '1.1.7'
+	id 'babric-loom' version '1.1-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -46,6 +46,18 @@ repositories {
 	maven {
 		name = 'Jitpack'
 		url = 'https://jitpack.io'
+	}
+	// Used for another StationAPI dependency
+	exclusiveContent {
+		forRepository {
+			maven {
+				name = "Modrinth"
+				url = "https://api.modrinth.com/maven"
+			}
+		}
+		filter {
+			includeGroup "maven.modrinth"
+		}
 	}
 	mavenCentral()
 }
