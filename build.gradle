@@ -1,5 +1,5 @@
 plugins {
-	id 'babric-loom' version '1.1-SNAPSHOT'
+	id 'babric-loom' version '1.1.7'
 	id 'maven-publish'
 }
 
@@ -40,7 +40,7 @@ repositories {
 	// Used for a StationAPI dependency.
 	maven {
 		name = 'Froge'
-		url 'https://maven.minecraftforge.net/'
+		url 'https://maven.neoforged.net/'
 	}
 	// Used for projects that do not have a maven repository, but do have a GitHub repository with working build scripts.
 	maven {
