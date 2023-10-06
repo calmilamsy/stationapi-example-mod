@@ -20,7 +20,7 @@ public class KeyPressedListener {
         }
         if (Keyboard.getEventKeyState() && Keyboard.isKeyDown(KeyBindingListener.keyBinding3.key)) {
             if (((Minecraft) FabricLoader.getInstance().getGameInstance()).player != null)
-				((Minecraft) FabricLoader.getInstance().getGameInstance()).player.damage(null, 1000000);
+                ((Minecraft) FabricLoader.getInstance().getGameInstance()).player.damage(null, 1000000);
         }
     }
 }
