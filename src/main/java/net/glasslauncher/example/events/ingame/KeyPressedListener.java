@@ -19,7 +19,8 @@ public class KeyPressedListener {
             ((Minecraft)FabricLoader.getInstance().getGameInstance()).player.increaseStat(AchievementListener.achievement2, 1);
         }
         if (Keyboard.getEventKeyState() && Keyboard.isKeyDown(KeyBindingListener.keyBinding3.key)) {
-            ((Minecraft) FabricLoader.getInstance().getGameInstance()).player.damage(null, 1000000);
+            if (((Minecraft) FabricLoader.getInstance().getGameInstance()).player != null)
+                ((Minecraft) FabricLoader.getInstance().getGameInstance()).player.damage(null, 1000000);
         }
     }
 }
