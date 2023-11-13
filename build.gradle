@@ -40,7 +40,7 @@ repositories {
 	// Used for a StationAPI dependency.
 	maven {
 		name = 'Froge'
-		url 'https://maven.neoforged.net/'
+		url 'https://maven.minecraftforge.net/'
 	}
 	// Used for projects that do not have a maven repository, but do have a GitHub repository with working build scripts.
 	maven {
