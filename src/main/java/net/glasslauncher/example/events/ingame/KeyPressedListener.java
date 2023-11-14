@@ -12,13 +12,13 @@ public class KeyPressedListener {
 
     @EventListener
     public void keyPressed(KeyStateChangedEvent event) {
-        if (Keyboard.getEventKeyState() && Keyboard.isKeyDown(KeyBindingListener.keyBinding.key)) {
+        if (Keyboard.getEventKeyState() && Keyboard.isKeyDown(KeyBindingListener.keyBinding.code)) {
             ((Minecraft) FabricLoader.getInstance().getGameInstance()).player.increaseStat(AchievementListener.achievement, 1);
         }
-        if (Keyboard.getEventKeyState() && Keyboard.isKeyDown(KeyBindingListener.keyBinding2.key)) {
+        if (Keyboard.getEventKeyState() && Keyboard.isKeyDown(KeyBindingListener.keyBinding2.code)) {
             ((Minecraft)FabricLoader.getInstance().getGameInstance()).player.increaseStat(AchievementListener.achievement2, 1);
         }
-        if (Keyboard.getEventKeyState() && Keyboard.isKeyDown(KeyBindingListener.keyBinding3.key)) {
+        if (Keyboard.getEventKeyState() && Keyboard.isKeyDown(KeyBindingListener.keyBinding3.code)) {
             if (((Minecraft) FabricLoader.getInstance().getGameInstance()).player != null)
                 ((Minecraft) FabricLoader.getInstance().getGameInstance()).player.damage(null, 1000000);
         }

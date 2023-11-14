@@ -1,17 +1,17 @@
 package net.glasslauncher.example.wrappers;
 
-import net.minecraft.block.material.Material;
-import net.modificationstation.stationapi.api.registry.Identifier;
-import net.modificationstation.stationapi.api.template.block.TemplateBlockBase;
+import net.minecraft.block.Material;
+import net.modificationstation.stationapi.api.template.block.TemplateBlock;
+import net.modificationstation.stationapi.api.util.Identifier;
 
-public class ExampleBlockWithModel extends TemplateBlockBase {
+public class ExampleBlockWithModel extends TemplateBlock {
 
     public ExampleBlockWithModel(Identifier identifier, Material material) {
         super(identifier, material);
     }
 
     @Override
-    public boolean isFullOpaque() {
+    public boolean isOpaque() {
         return false;
     }
 }

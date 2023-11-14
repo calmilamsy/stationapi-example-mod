@@ -1,23 +1,23 @@
 package net.glasslauncher.example.events.init;
 
 import net.mine_diver.unsafeevents.listener.EventListener;
-import net.minecraft.item.ItemBase;
+import net.minecraft.item.Item;
 import net.modificationstation.stationapi.api.event.registry.ItemRegistryEvent;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
-import net.modificationstation.stationapi.api.registry.Identifier;
-import net.modificationstation.stationapi.api.registry.ModID;
-import net.modificationstation.stationapi.api.template.item.TemplateItemBase;
+import net.modificationstation.stationapi.api.template.item.TemplateItem;
+import net.modificationstation.stationapi.api.util.Identifier;
+import net.modificationstation.stationapi.api.util.Namespace;
 import net.modificationstation.stationapi.api.util.Null;
 
 public class ItemListener {
 
-    public static ItemBase coolItem;
+    public static Item coolItem;
 
-    @Entrypoint.ModID
-    public static final ModID MOD_ID = Null.get();
+    @Entrypoint.Namespace
+    public static final Namespace NAMESPACE = Null.get();
 
     @EventListener
     public void registerItems(ItemRegistryEvent event) {
-        coolItem = new TemplateItemBase(Identifier.of(MOD_ID, "coolitem")).setTranslationKey(MOD_ID, "coolitem");
+        coolItem = new TemplateItem(Identifier.of(NAMESPACE, "coolitem")).setTranslationKey(NAMESPACE, "coolitem");
     }
 }

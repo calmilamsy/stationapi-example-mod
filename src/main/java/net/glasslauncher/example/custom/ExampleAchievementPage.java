@@ -1,35 +1,35 @@
 package net.glasslauncher.example.custom;
 
-import net.minecraft.block.BlockBase;
-import net.modificationstation.stationapi.api.client.gui.screen.menu.AchievementPage;
-import net.modificationstation.stationapi.api.registry.ModID;
+import net.minecraft.block.Block;
+import net.modificationstation.stationapi.api.client.gui.screen.achievement.AchievementPage;
+import net.modificationstation.stationapi.api.util.Namespace;
 
-import java.util.*;
+import java.util.Random;
 
 public class ExampleAchievementPage extends AchievementPage {
 
-    public ExampleAchievementPage(ModID modID, String pageName) {
-        super(modID, pageName);
+    public ExampleAchievementPage(Namespace namespace, String pageName) {
+        super(namespace, pageName);
     }
 
     @Override
     public int getBackgroundTexture(Random random, int column, int row, int randomizedRow, int currentTexture) {
-        int k = BlockBase.SAND.texture;
+        int k = Block.SAND.textureId;
         int l = random.nextInt(1 + row) + row / 2;
         if (l <= 37 && row != 35) {
             if (l == 22) {
-                k = random.nextInt(2) != 0 ? BlockBase.REDSTONE_ORE.texture : BlockBase.DIAMOND_ORE.texture;
+                k = random.nextInt(2) != 0 ? Block.REDSTONE_ORE.textureId : Block.DIAMOND_ORE.textureId;
             } else if (l == 10) {
-                k = BlockBase.WOOD.texture;
+                k = Block.PLANKS.textureId;
             } else if (l == 8) {
-                k = BlockBase.REDSTONE_ORE.texture;
+                k = Block.REDSTONE_ORE.textureId;
             } else if (l > 4) {
-                k = BlockBase.STONE.texture;
+                k = Block.STONE.textureId;
             } else if (l > 0) {
-                k = BlockBase.DIRT.texture;
+                k = Block.DIRT.textureId;
             }
         } else {
-            k = BlockBase.BEDROCK.texture;
+            k = Block.BEDROCK.textureId;
         }
 
         return k;

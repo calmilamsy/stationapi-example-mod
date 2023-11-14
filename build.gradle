@@ -1,5 +1,5 @@
 plugins {
-	id 'babric-loom' version '1.1.7'
+	id 'babric-loom' version '1.4.2'
 	id 'maven-publish'
 }
 
@@ -65,7 +65,7 @@ repositories {
 dependencies {
 	// To change the versions see the gradle.properties file
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
-	mappings "net.glasslauncher:bin:${project.yarn_mappings}"
+	mappings "net.glasslauncher:biny:${project.yarn_mappings}:v2"
 	modImplementation "babric:fabric-loader:${project.loader_version}"
 
 	implementation "org.slf4j:slf4j-api:1.8.0-beta4"
@@ -77,12 +77,12 @@ dependencies {
 	modImplementation("com.github.calmilamsy:ModMenu:${project.modmenu_version}") {
 		transitive false
 	}
-	modImplementation("net.glasslauncher.mods:GlassConfigAPI:${project.gcapi_version}") {
-		transitive false
-	}
-	modImplementation("net.glasslauncher:HowManyItems-Fabric-Unofficial:${project.howmanyitems_version}") {
-		transitive false
-	}
+//	modImplementation("net.glasslauncher.mods:GlassConfigAPI:${project.gcapi_version}") {
+//		transitive false
+//	}
+//	modImplementation("net.glasslauncher:HowManyItems-Fabric-Unofficial:${project.howmanyitems_version}") {
+//		transitive false
+//	}
 }
 
 processResources {
