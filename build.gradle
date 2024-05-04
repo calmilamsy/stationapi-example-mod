@@ -1,5 +1,6 @@
 plugins {
-	id 'babric-loom' version '1.4.2'
+	id 'fabric-loom' version '1.6.2'
+	id 'babric-loom-extension' version '1.6.9'
 	id 'maven-publish'
 }
 
@@ -14,7 +15,6 @@ loom {
 	mixin {
 		useLegacyMixinAp = true
 	}
-	gluedMinecraftJar()
 	customMinecraftManifest.set("https://babric.github.io/manifest-polyfill/${minecraft_version}.json")
 	intermediaryUrl.set("https://maven.glass-launcher.net/babric/babric/intermediary/%1\$s/intermediary-%1\$s-v2.jar")
 }

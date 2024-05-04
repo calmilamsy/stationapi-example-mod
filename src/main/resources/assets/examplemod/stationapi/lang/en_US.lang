@@ -1,15 +1,16 @@
-achievement.boned=You've been boned!
-achievement.boned.desc=Pick up a bone.
-achievement.apple=AppleStuff
-achievement.apple.desc=Pick up an apple.
+# @ is a shorthand for the current mod id, which is examplemod.
+achievement.@.boned=You've been boned!
+achievement.@.boned.desc=Pick up a bone.
+achievement.@.apple=AppleStuff
+achievement.@.apple.desc=Pick up an apple.
 
-achievement.page.examplemod=Example
+gui.stationapi.achievementPage.@.examplemod=Example
 
-item.coolitem.name=Cool Item
+item.@.coolitem.name=Cool Item
 
-tile.test.name=Example Block
-tile.test2.name=Example Block With Model
+tile.@.test.name=Example Block
+tile.@.test2.name=Example Block With Model
 
-key.test=Give Boned Achievement
-key.test2=Give Apple Achievement
-key.hurtme=Hurt Self
+key.@.test=Give Boned Achievement
+key.@.test2=Give Apple Achievement
+key.@.hurtme=Hurt Self
