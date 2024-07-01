@@ -1,6 +1,6 @@
 plugins {
-	id 'fabric-loom' version '1.6.2'
-	id 'babric-loom-extension' version '1.6.9'
+	id 'fabric-loom' version '1.6.9'
+	id 'babric-loom-extension' version '1.6.11'
 	id 'maven-publish'
 }
 
@@ -17,6 +17,10 @@ loom {
 	}
 	customMinecraftManifest.set("https://babric.github.io/manifest-polyfill/${minecraft_version}.json")
 	intermediaryUrl.set("https://maven.glass-launcher.net/babric/babric/intermediary/%1\$s/intermediary-%1\$s-v2.jar")
+}
+
+babric {
+	// disableM1Fix.set(true) // Uncomment for better performance on some systems. Don't uncomment if you use an apple M series machine, though.
 }
 
 repositories {
