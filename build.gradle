@@ -20,7 +20,7 @@ loom {
 }
 
 babric {
-	// disableM1Fix.set(true) // Uncomment for better performance on some systems. Don't uncomment if you use an apple M series machine, though.
+	// disableM1Fixes.set(true) // Uncomment for better performance on some systems. Don't uncomment if you use an apple M series machine, though.
 }
 
 repositories {
