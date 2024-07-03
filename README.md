@@ -6,6 +6,9 @@
 
 ## Common Issues
 
+**My project isn't building after updating babric loom/stationapi!**  
+Run a gradle task with `--refresh-dependencies` as an argument, and this should be fixed. If not, try deleting your project's `.gradle` folder, and try again.
+
 **I get "Invalid source release: 17" as an error!**  
 Use Java 17. Open up `File > Project Structure` and change your SDK to Java 17.  
 If you still get the issue, you may need to go into `File > Settings > Build, Execution, Deployment > Build Tools > Gradle` and change the Java that Gradle uses too.
