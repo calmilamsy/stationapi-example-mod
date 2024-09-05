@@ -3,7 +3,7 @@ package net.glasslauncher.example.events.init;
 import net.glasslauncher.example.wrappers.ExampleBlockWithModel;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.Block;
-import net.minecraft.block.Material;
+import net.minecraft.block.material.Material;
 import net.modificationstation.stationapi.api.event.registry.BlockRegistryEvent;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
 import net.modificationstation.stationapi.api.template.block.TemplateBlock;
