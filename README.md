@@ -2,6 +2,8 @@
 
 ## Setup
 
+Run the `_setup/setupMod` task and give it the inputs it needs. **This is a required step.**
+
 [See the StationAPI wiki.](https://github.com/ModificationStation/StationAPI/wiki)
 
 ## Common Issues

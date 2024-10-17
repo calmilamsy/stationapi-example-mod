@@ -7,7 +7,7 @@ import net.modificationstation.stationapi.api.util.Namespace;
 import net.modificationstation.stationapi.api.util.Null;
 import org.apache.logging.log4j.Logger;
 
-public class ServerInitListener {
+public class InitListener {
 
     @Entrypoint.Namespace
     private static final Namespace NAMESPACE = Null.get();
@@ -17,6 +17,6 @@ public class ServerInitListener {
 
     @EventListener
     private static void serverInit(InitEvent event) {
-        LOGGER.error(NAMESPACE.toString());
+        LOGGER.info(NAMESPACE.toString());
     }
 }
