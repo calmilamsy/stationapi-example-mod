@@ -200,7 +200,7 @@ tasks.register("setupMod") {
 
 		// Fill out the fabric mod json
 		val modJson = projectDir.cd("resources/fabric.mod.json")
-		modJson.writeText(modJson.readText().format(modID))
+		modJson.writeText(modJson.readText().format(modID, modID))
 
 		// And finally yeet ourself into the void
 		val buildFile = project.projectDir.cd("build.gradle.kts")
