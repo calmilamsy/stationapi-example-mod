@@ -73,6 +73,12 @@ dependencies {
 
 	// StAPI itself.
 	//modImplementation("net.modificationstation:StationAPI:${project.properties["stationapi_version"]}")
+
+	// Extra mods.
+	//modImplementation("net.glasslauncher.mods:GlassConfigAPI:${project.properties["gcapi_version"]}")
+	//modImplementation("net.glasslauncher.mods:glass-networking:${project.properties["glassnetworking_version"]}")
+	//modImplementation("net.glasslauncher.mods:ModMenu:${project.properties["modmenu_version"]}")
+	//modImplementation("net.glasslauncher.mods:AlwaysMoreItems:${project.properties["alwaysmoreitems_version"]}")
 }
 
 configurations.all {
@@ -151,6 +157,26 @@ tasks.register("setupMod") {
 			URL("https://maven.glass-launcher.net/releases/net/modificationstation/StationAPI/maven-metadata.xml").readText().split("<latest>")[1].split("</latest>")[0]
 		println("Found StationAPI version: $stapiVersion")
 
+		println("Grabbing latest Glass Networking version.")
+		val gnVersion =
+			URL("https://maven.glass-launcher.net/releases/net/glasslauncher/mods/glass-networking/maven-metadata.xml").readText().split("<latest>")[1].split("</latest>")[0]
+		println("Found Glass Networking version: $gnVersion")
+
+		println("Grabbing latest Glass Config API version.")
+		val gcapiVersion =
+			URL("https://maven.glass-launcher.net/releases/net/glasslauncher/mods/GlassConfigAPI/maven-metadata.xml").readText().split("<latest>")[1].split("</latest>")[0]
+		println("Found GCAPI version: $gcapiVersion")
+
+		println("Grabbing latest ModMenu version.")
+		val mmVersion =
+			URL("https://maven.glass-launcher.net/releases/net/glasslauncher/mods/ModMenu/maven-metadata.xml").readText().split("<latest>")[1].split("</latest>")[0]
+		println("Found ModMenu version: $mmVersion")
+
+		println("Grabbing latest Always More Items version.")
+		val amiVersion =
+			URL("https://maven.glass-launcher.net/releases/net/glasslauncher/mods/AlwaysMoreItems/maven-metadata.xml").readText().split("<latest>")[1].split("</latest>")[0]
+		println("Found AMI version: $amiVersion")
+
 		println("Mod archive name: (This should ideally be snake_case, decides your maven name)")
 		val modArchiveName = readInput()
 
@@ -170,7 +196,7 @@ tasks.register("setupMod") {
 				modID = suggestedID
 			}
 		}
-		propsFile.writeText(propsFileContent.format(binyVersion, modID, mavenGroup, modArchiveName, stapiVersion))
+		propsFile.writeText(propsFileContent.format(binyVersion, modID, mavenGroup, modArchiveName, stapiVersion, gcapiVersion, gnVersion, amiVersion, mmVersion))
 
 		val projectDir = File(projectDir, "src/main")
 
@@ -196,15 +222,15 @@ tasks.register("setupMod") {
 		val assets = projectDir.cd("resources/assets/examplemod")
 		val langFile = assets.cd("stationapi/lang/en_US.lang")
 		langFile.writeText(langFile.readText().format(modID))
-		assets.renameTo(projectDir.cd("assets/$modID"))
+		assets.renameTo(projectDir.cd("resources/assets/$modID"))
 
 		// Fill out the fabric mod json
 		val modJson = projectDir.cd("resources/fabric.mod.json")
-		modJson.writeText(modJson.readText().format(modID, modID))
+		modJson.writeText(modJson.readText().format(modID, modID, "${mavenGroup}.$modID", modID))
 
 		// And finally yeet ourself into the void
 		val buildFile = project.projectDir.cd("build.gradle.kts")
-		buildFile.writeText(buildFile.readText().split("\r\ntasks.register(\"setupMod\")")[0].replace("//modImplementation(\"net.modificationstation:StationAPI", "modImplementation(\"net.modificationstation:StationAPI"))
+		buildFile.writeText(buildFile.readText().split("tasks.register(\"setupMod\")")[0].replace("//modImplementation(", "modImplementation("))
 
 		println("Setup complete! Reload your gradle project, and everything *should* work.")
 	}
