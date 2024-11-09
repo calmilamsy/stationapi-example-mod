@@ -88,10 +88,9 @@ configurations.all {
 
 tasks.withType<ProcessResources> {
 	inputs.property("version", project.properties["version"])
-	inputs.property("modid", project.properties["modid"])
 
 	filesMatching("fabric.mod.json") {
-		expand(mapOf("version" to project.properties["version"], "modid" to project.properties["modid"]))
+		expand(mapOf("version" to project.properties["version"]))
 	}
 }
 
