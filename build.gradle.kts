@@ -54,7 +54,7 @@ repositories {
 
 dependencies {
 	minecraft("com.mojang:minecraft:b1.7.3")
-	mappings("net.glasslauncher:biny:${if ((project.properties["yarn_mappings"] as String) == "%s") "b1.7.3+4cbd9c8" else project.properties["yarn_mappings"]}:v2")
+	mappings("net.glasslauncher:biny:b1.7.3+4cbd9c8:v2")
 	modImplementation("babric:fabric-loader:${project.properties["loader_version"]}")
 
 	implementation("org.apache.logging.log4j:log4j-core:2.17.2")
@@ -225,6 +225,9 @@ tasks.register("setupMod") {
 		// Fill out the fabric mod json
 		val modJson = projectDir.cd("resources/fabric.mod.json")
 		modJson.writeText(modJson.readText().format(modID, modID, "${mavenGroup}.$modID", modID))
+
+		// Replace the hardcoded mappings string with the one in the properties file
+		buildFile.writeText(buildFile.readText().replace("b1.7.3+4cbd9c8", "\${project.properties[\"yarn_version\"]}"))
 
 		// And finally yeet ourself into the void
 		val buildFile = project.projectDir.cd("build.gradle.kts")
