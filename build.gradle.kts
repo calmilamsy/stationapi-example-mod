@@ -6,8 +6,8 @@ import java.net.URL
 
 plugins {
 	id("maven-publish")
-	id("fabric-loom") version "1.8.10"
-	id("babric-loom-extension") version "1.8.5"
+	id("fabric-loom") version "1.9.2"
+	id("babric-loom-extension") version "1.9.3"
 }
 
 //noinspection GroovyUnusedAssignment
@@ -72,18 +72,16 @@ dependencies {
 	implementation("com.google.guava:guava:33.2.1-jre")
 
 	// StAPI itself.
-	//modImplementation("net.modificationstation:StationAPI:${project.properties["stationapi_version"]}")
+	// transitiveImplementation tells babric loom that you want this dependency to be pulled into other mod's development workspaces. Best used ONLY for required dependencies.
+	//modImplementation(transitiveImplementation("net.modificationstation:StationAPI:${project.properties["stationapi_version"]}") as Dependency)
 
 	// Extra mods.
-	//modImplementation("net.glasslauncher.mods:GlassConfigAPI:${project.properties["gcapi_version"]}")
-	//modImplementation("net.glasslauncher.mods:glass-networking:${project.properties["glassnetworking_version"]}")
+	// https://github.com/calmilamsy/glass-config-api
+	//modImplementation(transitiveImplementation("net.glasslauncher.mods:GlassConfigAPI:${project.properties["gcapi_version"]}") as Dependency)
+	// https://github.com/calmilamsy/modmenu
 	//modImplementation("net.glasslauncher.mods:ModMenu:${project.properties["modmenu_version"]}")
+	// https://github.com/Glass-Series/Always-More-Items
 	//modImplementation("net.glasslauncher.mods:AlwaysMoreItems:${project.properties["alwaysmoreitems_version"]}")
-}
-
-configurations.all {
-	exclude(group = "org.ow2.asm", module = "asm-debug-all")
-	exclude(group = "org.ow2.asm", module = "asm-all")
 }
 
 tasks.withType<ProcessResources> {
@@ -137,6 +135,7 @@ publishing {
 }
 
 tasks.register("setupMod") {
+	// If this still exists after setup, everything after the line above should be removed. It won't work again after you've run it once.
 	group = "_setup"
 
 	doLast {
