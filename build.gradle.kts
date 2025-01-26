@@ -227,7 +227,7 @@ tasks.register("setupMod") {
 		modJson.writeText(modJson.readText().format(modID, modID, "${mavenGroup}.$modID", modID))
 
 		// Replace the hardcoded mappings string with the one in the properties file
-		buildFile.writeText(buildFile.readText().replace("b1.7.3+4cbd9c8", "\${project.properties[\"yarn_version\"]}"))
+		buildFile.writeText(buildFile.readText().replace("b1.7.3+4cbd9c8", "\${project.properties[\"yarn_mappings\"]}"))
 
 		// And finally yeet ourself into the void
 		val buildFile = project.projectDir.cd("build.gradle.kts")
