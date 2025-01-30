@@ -27,10 +27,12 @@ loom {
 		register("testClient") {
 			source("test")
 			client()
+			configurations.transitiveImplementation
 		}
 		register("testServer") {
 			source("test")
 			server()
+			configurations.transitiveImplementation
 		}
 	}
 }
