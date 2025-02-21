@@ -8,12 +8,10 @@ import net.modificationstation.stationapi.api.util.Null;
 import org.apache.logging.log4j.Logger;
 
 public class InitListener {
+    @SuppressWarnings("UnstableApiUsage")
+    public static final Namespace NAMESPACE = Namespace.resolve();
 
-    @Entrypoint.Namespace
-    private static Namespace NAMESPACE = Null.get();
-
-    @Entrypoint.Logger
-    private static Logger LOGGER = Null.get();
+    public static final Logger LOGGER = NAMESPACE.getLogger();
 
     @EventListener
     private static void serverInit(InitEvent event) {
