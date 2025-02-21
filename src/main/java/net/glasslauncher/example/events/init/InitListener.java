@@ -10,10 +10,10 @@ import org.apache.logging.log4j.Logger;
 public class InitListener {
 
     @Entrypoint.Namespace
-    private static final Namespace NAMESPACE = Null.get();
+    private static Namespace NAMESPACE = Null.get();
 
     @Entrypoint.Logger
-    private static final Logger LOGGER = Null.get();
+    private static Logger LOGGER = Null.get();
 
     @EventListener
     private static void serverInit(InitEvent event) {
