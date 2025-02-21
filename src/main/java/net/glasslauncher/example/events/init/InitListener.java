@@ -14,7 +14,7 @@ public class InitListener {
     public static final Logger LOGGER = NAMESPACE.getLogger();
 
     @EventListener
-    private static void serverInit(InitEvent event) {
+    public static void serverInit(InitEvent event) {
         LOGGER.info(NAMESPACE.toString());
     }
 }
