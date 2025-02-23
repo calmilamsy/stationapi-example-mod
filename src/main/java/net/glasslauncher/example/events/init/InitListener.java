@@ -3,17 +3,22 @@ package net.glasslauncher.example.events.init;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.modificationstation.stationapi.api.event.mod.InitEvent;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
+import net.modificationstation.stationapi.api.mod.entrypoint.EntrypointManager;
 import net.modificationstation.stationapi.api.util.Namespace;
 import net.modificationstation.stationapi.api.util.Null;
 import org.apache.logging.log4j.Logger;
 
+import java.lang.invoke.MethodHandles;
+
 public class InitListener {
+    static {
+        EntrypointManager.registerLookup(MethodHandles.lookup());
+    }
 
-    @Entrypoint.Namespace
-    private static final Namespace NAMESPACE = Null.get();
+    @SuppressWarnings("UnstableApiUsage")
+    public static final Namespace NAMESPACE = Namespace.resolve();
 
-    @Entrypoint.Logger
-    private static final Logger LOGGER = Null.get();
+    public static final Logger LOGGER = NAMESPACE.getLogger();
 
     @EventListener
     private static void serverInit(InitEvent event) {
