@@ -86,6 +86,10 @@ dependencies {
 	//modImplementation("net.glasslauncher.mods:AlwaysMoreItems:${project.properties["alwaysmoreitems_version"]}")
 }
 
+configurations.all {
+	exclude("babric")
+}
+
 tasks.withType<ProcessResources> {
 	inputs.property("version", project.properties["version"])
 
