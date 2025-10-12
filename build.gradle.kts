@@ -57,7 +57,7 @@ repositories {
 dependencies {
 	minecraft("com.mojang:minecraft:b1.7.3")
 	mappings("net.glasslauncher:biny:b1.7.3+4cbd9c8:v2")
-	modImplementation("babric:fabric-loader:${project.properties["loader_version"]}")
+	modImplementation("net.fabricmc:fabric-loader:${project.properties["loader_version"]}")
 
 	implementation("org.apache.logging.log4j:log4j-core:2.17.2")
 
