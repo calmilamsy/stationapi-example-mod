@@ -6,8 +6,8 @@ import java.net.URL
 
 plugins {
 	id("maven-publish")
-	id("fabric-loom") version "1.9.2"
-	id("babric-loom-extension") version "1.9.3"
+	id("fabric-loom") version "1.13.3"
+	id("babric-loom-extension") version "1.13.3"
 }
 
 //noinspection GroovyUnusedAssignment
