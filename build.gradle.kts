@@ -173,7 +173,7 @@ tasks.register("setupMod") {
 
 		println("Grabbing latest ModMenu version.")
 		val mmVersion =
-			URL("https://maven.glass-launcher.net/releases/net/glasslauncher/mods/ModMenu/maven-metadata.xml").readText().split("<latest>")[1].split("</latest>")[0]
+			URL("https://maven.glass-launcher.net/releases/net/danygames2014/modmenu/maven-metadata.xml").readText().split("<latest>")[1].split("</latest>")[0]
 		println("Found ModMenu version: $mmVersion")
 
 		println("Grabbing latest Always More Items version.")
