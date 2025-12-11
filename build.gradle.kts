@@ -153,32 +153,32 @@ tasks.register("setupMod") {
 		}
 
 		println("Grabbing latest BINY version.")
-		val binyVersion = URL("https://maven.glass-launcher.net/releases/net/glasslauncher/biny/maven-metadata.xml").readText().split("<latest>")[1].split("</latest>")[0]
+		val binyVersion = URI("https://maven.glass-launcher.net/releases/net/glasslauncher/biny/maven-metadata.xml").toURL().readText().split("<latest>")[1].split("</latest>")[0]
 		println("Found BINY version: $binyVersion")
 
 		println("Grabbing latest StationAPI version.")
 		val stapiVersion =
-			URL("https://maven.glass-launcher.net/releases/net/modificationstation/StationAPI/maven-metadata.xml").readText().split("<latest>")[1].split("</latest>")[0]
+            URI("https://maven.glass-launcher.net/releases/net/modificationstation/StationAPI/maven-metadata.xml").toURL().readText().split("<latest>")[1].split("</latest>")[0]
 		println("Found StationAPI version: $stapiVersion")
 
 		println("Grabbing latest Glass Networking version.")
 		val gnVersion =
-			URL("https://maven.glass-launcher.net/releases/net/glasslauncher/mods/glass-networking/maven-metadata.xml").readText().split("<latest>")[1].split("</latest>")[0]
+            URI("https://maven.glass-launcher.net/releases/net/glasslauncher/mods/glass-networking/maven-metadata.xml").toURL().readText().split("<latest>")[1].split("</latest>")[0]
 		println("Found Glass Networking version: $gnVersion")
 
 		println("Grabbing latest Glass Config API version.")
 		val gcapiVersion =
-			URL("https://maven.glass-launcher.net/releases/net/glasslauncher/mods/GlassConfigAPI/maven-metadata.xml").readText().split("<latest>")[1].split("</latest>")[0]
+            URI("https://maven.glass-launcher.net/releases/net/glasslauncher/mods/GlassConfigAPI/maven-metadata.xml").toURL().readText().split("<latest>")[1].split("</latest>")[0]
 		println("Found GCAPI version: $gcapiVersion")
 
 		println("Grabbing latest ModMenu version.")
 		val mmVersion =
-			URL("https://maven.glass-launcher.net/releases/net/danygames2014/modmenu/maven-metadata.xml").readText().split("<latest>")[1].split("</latest>")[0]
+            URI("https://maven.glass-launcher.net/releases/net/danygames2014/modmenu/maven-metadata.xml").toURL().readText().split("<latest>")[1].split("</latest>")[0]
 		println("Found ModMenu version: $mmVersion")
 
 		println("Grabbing latest Always More Items version.")
 		val amiVersion =
-			URL("https://maven.glass-launcher.net/releases/net/glasslauncher/mods/AlwaysMoreItems/maven-metadata.xml").readText().split("<latest>")[1].split("</latest>")[0]
+            URI("https://maven.glass-launcher.net/releases/net/glasslauncher/mods/AlwaysMoreItems/maven-metadata.xml").toURL().readText().split("<latest>")[1].split("</latest>")[0]
 		println("Found AMI version: $amiVersion")
 
 		println("Mod archive name: (This should ideally be snake_case, decides your maven name)")
