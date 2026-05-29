@@ -6,8 +6,8 @@ import java.net.URL
 
 plugins {
 	id("maven-publish")
-	id("fabric-loom") version "1.13.3"
-	id("babric-loom-extension") version "1.13.3"
+	id("fabric-loom") version "1.15.3"
+	id("babric-loom-extension") version "1.15.3"
 }
 
 //noinspection GroovyUnusedAssignment
@@ -167,8 +167,11 @@ tasks.register("setupMod") {
 		println("Found Glass Networking version: $gnVersion")
 
 		println("Grabbing latest Glass Config API version.")
+		val gcapiVersions =
+			URI("https://maven.glass-launcher.net/releases/net/glasslauncher/mods/GlassConfigAPI/maven-metadata.xml").toURL().readText().split("<versions>")[1].split("</versions>")[0].replace("\\<\\/?version\\>".toRegex(), "").replace(" ", "").split("\n").filter({!it.contains("gen2") && !it.isEmpty()})
 		val gcapiVersion =
-            URI("https://maven.glass-launcher.net/releases/net/glasslauncher/mods/GlassConfigAPI/maven-metadata.xml").toURL().readText().split("<latest>")[1].split("</latest>")[0]
+			gcapiVersions[gcapiVersions.size - 1]
+
 		println("Found GCAPI version: $gcapiVersion")
 
 		println("Grabbing latest ModMenu version.")
