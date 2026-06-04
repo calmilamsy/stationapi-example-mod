@@ -118,6 +118,12 @@ tasks.withType<Jar> {
 	}
 }
 
+// Tells gradle to not generate module files for maven.
+// They aren't standard and the documentation is abysmal. Stop it.
+tasks.withType<GenerateModuleMetadata> {
+	enabled = false
+}
+
 publishing {
 	repositories {
 		mavenLocal()
